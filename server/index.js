@@ -4,7 +4,7 @@ var elasticsearch = require("elasticsearch");
 
 const app = express();
 var client = new elasticsearch.Client({
-  host: "localhost:9200",
+  host: process.env.ELASTICSEARCH_HOSTS,
   log: "trace",
   apiVersion: "7.2", // use the same version of your Elasticsearch instance
 });
@@ -48,5 +48,5 @@ app.get("/elastic", async (req, res, next) => {
 });
 
 app.listen(3030, () => {
-  console.log("Server started on port 3000");
+  console.log("Server started on port 3030");
 });
